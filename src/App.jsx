@@ -1,12 +1,26 @@
-import { useState } from 'react'
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes
+} from "react-router-dom";
+import Welcome from "./pages/Welcome";
+import Layout from "./common/components/Layout";
+import Map from "./pages/Map";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>MORC Trails Map</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={<Layout />}
+        >
+          <Route index element={<Welcome />} />
+          <Route path="/map" element={<Map />} />
+        </Route>
+      </Routes>
+    </Router>
   )
 }
 
